@@ -179,14 +179,6 @@ public class MainWindowController implements Initializable {
                     }
                 }
         );
-
-        itemsTableView.setItems(dummy());
-    }
-
-    private ObservableList<Item> dummy() {
-        ObservableList<Item> ret = FXCollections.observableArrayList();
-        ret.add(new Item("123", "123", new BigDecimal(123.123)));
-        return ret;
     }
 
     public void searchItemFieldTyped(KeyEvent keyEvent) {
@@ -233,8 +225,23 @@ public class MainWindowController implements Initializable {
         if (filename == null) {
             JOptionPane.showMessageDialog(null, "Invalid filename given");
         }
-        if (!Files.exists(Path.of(filename))) {
+
+        if (!Files.exists(Path.of("TestIO/" + filename))) {
             JOptionPane.showMessageDialog(null, "Could not find file " + filename);
+        }
+        String extension = filename.substring(filename.indexOf('.') + 1);
+        System.out.println("extension is: " + extension);
+        if (extension.equalsIgnoreCase("json")) {
+            iModel.importJSON(filename);
+            itemsTableView.setItems(iModel.items);
+        }
+        if (extension.equalsIgnoreCase("txt")) {
+            iModel.importCSV(filename);
+            itemsTableView.setItems(iModel.items);
+        }
+        if (extension.equalsIgnoreCase("html")) {
+            iModel.importHTML(filename);
+            itemsTableView.setItems(iModel.items);
         }
     }
 }

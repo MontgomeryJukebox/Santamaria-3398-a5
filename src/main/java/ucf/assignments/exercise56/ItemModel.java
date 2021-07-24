@@ -57,7 +57,7 @@ public class ItemModel {
 
     public void exportJSON(String filename) {
         try {
-            exporter.exportJSON(this, filename);
+            exporter.exportJSON(this, filename + ".json");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -65,7 +65,7 @@ public class ItemModel {
 
     public void exportCSV(String filename) {
         try {
-            exporter.exportCSV(this, filename);
+            exporter.exportCSV(this, filename + ".txt");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -73,7 +73,7 @@ public class ItemModel {
 
     public void exportHTML(String filename) {
         try {
-            exporter.exportHTML(this, filename);
+            exporter.exportHTML(this, filename + ".html");
         } catch (Exception e) {
             e.printStackTrace();
         }

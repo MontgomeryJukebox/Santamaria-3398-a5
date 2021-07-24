@@ -1,0 +1,39 @@
+{
+  "items": [
+    {
+      "serialNumber": "abc",
+      "name": "def",
+      "value": 123
+    },
+    {
+      "serialNumber": "def",
+      "name": "ghi",
+      "value": 321
+    },
+    {
+      "serialNumber": "how",
+      "name": "ghi",
+      "value": 321
+    },
+    {
+      "serialNumber": "hello",
+      "name": "ghi",
+      "value": 321
+    },
+    {
+      "serialNumber": "goodbye",
+      "name": "ghi",
+      "value": 321
+    },
+    {
+      "serialNumber": "abc123",
+      "name": "ghi",
+      "value": 321
+    },
+    {
+      "serialNumber": "adc3434",
+      "name": "ghi",
+      "value": 321
+    }
+  ]
+}
