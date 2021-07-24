@@ -8,6 +8,7 @@ package ucf.assignments.exercise56;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.nio.file.Files;
@@ -50,7 +51,11 @@ public class Exporter {
     }
 
     void exportCSV(ItemModel model, String filename) throws Exception {
-
+        BufferedWriter writer = Files.newBufferedWriter(Paths.get(rootDir + "/" + filename));
+        for (Item i : model.items) {
+            writer.write(i.getSerialNumber() + "\t" + i.getName() + "\t" + i.getValue() + "\n");
+        }
+        writer.flush();
     }
 
     void exportHTML(ItemModel model, String filename) throws Exception {
