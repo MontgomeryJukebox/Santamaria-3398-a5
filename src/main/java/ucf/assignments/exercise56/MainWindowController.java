@@ -146,7 +146,6 @@ public class MainWindowController implements Initializable {
                         if (!Item.isValidSerialNumber(serialNumber)) {
                             JOptionPane.showMessageDialog(null, "Invalid Serial Number");
                         }
-                        System.out.println("serial Number is unique: " + iModel.uniqueSerialNumber(serialNumber));
                         if (!iModel.uniqueSerialNumber(serialNumber)) {
                             JOptionPane.showMessageDialog(null, "There is already an item with that serial number");
                             itemsTableView.setItems(iModel.items);
@@ -221,6 +220,7 @@ public class MainWindowController implements Initializable {
             if (i.getSerialNumber().equals(serialNumber)) {
                 found = true;
                 iModel.items.remove(i);
+                itemsTableView.setItems(iModel.items);
             }
         }
         if (!found) {
