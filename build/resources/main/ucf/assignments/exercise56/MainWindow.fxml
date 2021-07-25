@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ucf.assignments.exercise56.MainWindowController">
+   <top>
+      <MenuBar BorderPane.alignment="CENTER">
+        <menus>
+          <Menu mnemonicParsing="false" text="File">
+            <items>
+                  <MenuItem mnemonicParsing="false" text="New" />
+                  <MenuItem mnemonicParsing="false" text="Save as..." />
+                  <MenuItem mnemonicParsing="false" text="Load..." />
+                  <SeparatorMenuItem mnemonicParsing="false" />
+              <MenuItem mnemonicParsing="false" text="Quit" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Find">
+            <items>
+              <MenuItem fx:id="searchItemButton" mnemonicParsing="false" onAction="#searchItemButtonClicked" text="Search..." />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Help">
+            <items>
+              <MenuItem mnemonicParsing="false" text="About" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+   </top>
+   <center>
+      <TableView fx:id="itemsTableView" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn fx:id="itemsSerialNumberColumn" maxWidth="1.7976931348623157E308" minWidth="130.0" prefWidth="-1.0" text="Serial Number" />
+          <TableColumn fx:id="itemsNameColumn" maxWidth="1.7976931348623157E308" minWidth="70.0" prefWidth="-1.0" text="Name" />
+            <TableColumn fx:id="itemsValueColumn" maxWidth="1.7976931348623157E308" minWidth="60.0" prefWidth="-1.0" text="Value" />
+        </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <VBox BorderPane.alignment="CENTER">
+         <children>
+            <HBox spacing="4.0">
+               <children>
+                  <TextField fx:id="itemSerialNumberTextField" promptText="Serial Number" />
+                  <TextField fx:id="deleteItemSerialNumberTextField" promptText="Name" />
+                  <TextField fx:id="itemsPriceTextField" promptText="Price" />
+                  <Button mnemonicParsing="false" onAction="#addNewItemButtonClicked" text="New Item" />
+               </children>
+            </HBox>
+            <HBox nodeOrientation="RIGHT_TO_LEFT">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#deleteItemButtonClicked" text="Delete Item" />
+                  <TextField prefHeight="24.0" prefWidth="163.0" promptText="Serial Number" />
+               </children>
+            </HBox>
+            <HBox>
+               <children>
+                  <TextField fx:id="searchField" onKeyTyped="#searchItemFieldTyped" promptText="Search" />
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </bottom>
+</BorderPane>

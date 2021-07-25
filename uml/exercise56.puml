@@ -1,0 +1,88 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class InventoryTracker {
+    start()
+    main()
+}
+
+class SceneManager {
+    scenes: Map<String, Scene>
+
+    load()
+    getScene(String): Scene
+}
+
+class MainWindowController {
+    items: ItemModel
+    scenes: SceneManager
+
+    + MainWindowController(ItemModel, SceneManager)
+
+    addItemButtonClicked(EventHandler)
+    editItemButtonClicked(EventHandler)
+    removeItemButtonClicked(EventHandler)
+
+    addItem(String, String, BigDecimal)
+    addItem()
+
+    saveInventoryAsCSV(filename: String)
+    saveInventoryAsHTML(filename: String)
+    saveInventoryAsJSON(filename: String)
+}
+
+class AddItemWindowController {
+
+}
+
+class EditItemWindowController {
+
+}
+
+class RemoveItemWindowController {
+
+}
+
+class SearchItemWindowController {
+
+}
+
+class ItemModel {
+    - ObservableList<Item>
+}
+
+class Item {
+    - name: SimpleStringProperty
+    - serialNumber: SimpleStringProperty
+    - value: SimpleDoubleProperty
+
+    + getName()
+    + setName()
+    + nameProperty()
+    + getSerialNumber()
+    ...
+}
+
+class FileManager {
+    saveAsCSV(filename: String, data: String)
+    saveAsJSON(filename: String, data: String)
+    saveAsHTML(filename: String, data: String)
+}
+
+MainWindowController o-- FileManager
+openjfx.org.Applciation <|-- InventoryTracker
+InventoryTracker -- SceneManager
+SceneManager -- MainWindowController
+SceneManager -- AddItemWindowController
+SceneManager -- EditItemWindowController
+SceneManager -- RemoveItemWindowController
+SceneManager -- SearchItemWindowController
+MainWindowController o-- ItemModel
+SearchItemWindowController o-- ItemModel
+RemoveItemWindowController o-- ItemModel
+EditItemWindowController o-- ItemModel
+AddItemWindowController o-- ItemModel
+ItemModel *-- Item
+
+
+@enduml
