@@ -6,13 +6,13 @@ import javafx.util.converter.BigDecimalStringConverter;
 import java.math.BigDecimal;
 
 public class Item {
-    private SimpleStringProperty serialNumber;
-    private SimpleStringProperty name;
+    private String serialNumber;
+    private String name;
     private BigDecimal value;
 
     public Item(String serialNumber, String name, BigDecimal value) {
-        this.serialNumber = new SimpleStringProperty(serialNumber);
-        this.name = new SimpleStringProperty(name);
+        this.serialNumber = serialNumber;
+        this.name = name;
         this.value = value;
     }
 
@@ -33,19 +33,19 @@ public class Item {
     }
 
     public String getName() {
-        return name.get();
+        return name;
     }
 
     public void setName(String name) {
-        this.name = new SimpleStringProperty(name);
+        this.name = name;
     }
 
     public String getSerialNumber() {
-        return serialNumber.get();
+        return serialNumber;
     }
 
     public void setSerialNumber(String serialNumber) {
-        this.serialNumber = new SimpleStringProperty(serialNumber);
+        this.serialNumber = serialNumber;
     }
 
     public String getValue() {

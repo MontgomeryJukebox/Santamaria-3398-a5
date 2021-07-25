@@ -28,7 +28,7 @@ public class ItemModel {
         try {
             items = importer.importJSON(filename);
         } catch (IOException ioe) {
-
+            ioe.printStackTrace();
         }
     }
 
@@ -37,6 +37,38 @@ public class ItemModel {
             items = importer.importCSV(filename);
         } catch (IOException ioe) {
             ioe.printStackTrace();
+        }
+    }
+
+    public void importHTML(String filename) {
+        try {
+            items = importer.importHTML(filename);
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
+        }
+    }
+
+    public void exportJSON(String filename) {
+        try {
+            exporter.exportJSON(this, filename);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void exportCSV(String filename) {
+        try {
+            exporter.exportCSV(this, filename);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void exportHTML(String filename) {
+        try {
+            exporter.exportHTML(this, filename);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 }

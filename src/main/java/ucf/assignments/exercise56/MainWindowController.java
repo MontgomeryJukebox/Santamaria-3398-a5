@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
@@ -57,6 +58,9 @@ public class MainWindowController implements Initializable {
     private TextField deleteItemSerialNumberTextField;
 
     @FXML
+    private MenuItem saveAsMenuItem;
+
+    @FXML
     void addNewItemButtonClicked(ActionEvent event) {
         String serial, name, price;
         serial = itemSerialNumberTextField.getText();
@@ -85,44 +89,36 @@ public class MainWindowController implements Initializable {
         itemsTableView.setItems(iModel.items);
     }
 
+    @FXML
     void saveAsButtonClicked(ActionEvent event) {
-        /*
+        String filename = JOptionPane.showInputDialog(null, "Please provide the path for the file (relative paths will be with respect to the TestIO directory)");
+        String type = JOptionPane.showInputDialog(null, "Save as json, csv, or html? (cas insensitive)");
 
-        filename = FileManager.getName();
-        filetype = FileManager.getType();
-
-        switch (filetype) {
-            case CSV:
-                saveAsVSC(filename);
-                break;
-            case JSON:
-                saveAsJSON(filename);
-                break;
+        if (filename == null || type == null) {
+            return;
         }
-         */
+
+        if (type.equalsIgnoreCase("json")) {
+            saveAsJSON(filename);
+        }
+        if (type.equalsIgnoreCase("csv")) {
+            saveAsCSV(filename);
+        }
+        if (type.equalsIgnoreCase("html")) {
+            saveAsHTML(filename);
+        }
     }
 
     public void saveAsCSV(String filename) {
-        /*
-        open up filename
-        for each item in the item model
-            write the item to file as sn \t name \t price
-         close file
-         */
+        iModel.exportCSV(filename);
     }
 
     public void saveAsJSON(String filename) {
-        Exporter exporter = new Exporter("TestIO");
+        iModel.exportJSON(filename);
     }
 
     public void saveAsHTML(String filename) {
-
-        /*
-        open up filename
-        for each item in the item model
-            write the item to file
-        close file
-         */
+        iModel.exportHTML(filename);
     }
 
     public void initialize(URL url, ResourceBundle rb) {
@@ -130,19 +126,22 @@ public class MainWindowController implements Initializable {
         itemsNameColumn.setCellValueFactory(new PropertyValueFactory<Item, String>("Name"));
         itemsValueColumn.setCellValueFactory(new PropertyValueFactory<Item, String>("Value"));
 
+        itemsTableView.setEditable(true);
+        itemsSerialNumberColumn.setEditable(true);
+        itemsNameColumn.setEditable(true);
+        itemsValueColumn.setEditable(true);
+
         itemsSerialNumberColumn.setCellFactory(TextFieldTableCell.<Item>forTableColumn());
         itemsSerialNumberColumn.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<Item, String>>() {
                     @Override
                     public void handle(TableColumn.CellEditEvent<Item, String> event) {
-                        /* TODO check if serial number is valid */
                         ((Item) event.getTableView().getItems().get(
                                 event.getTablePosition().getRow())
                         ).setSerialNumber(event.getNewValue());
                     }
                 }
         );
-
 
         itemsNameColumn.setOnEditCommit(
                 new EventHandler<TableColumn.CellEditEvent<Item, String>>() {
@@ -175,10 +174,6 @@ public class MainWindowController implements Initializable {
         return ret;
     }
 
-    public void searchItemButtonClicked(ActionEvent actionEvent) {
-
-    }
-
     public void searchItemFieldTyped(KeyEvent keyEvent) {
         if (searchField.getText().length() == 0) {
             itemsTableView.setItems(iModel.items);
@@ -201,6 +196,19 @@ public class MainWindowController implements Initializable {
     }
 
     public void deleteItemButtonClicked(ActionEvent actionEvent) {
-        JOptionPane.showMessageDialog(null, deleteItemSerialNumberTextField.getText());
+        String serialNumber = deleteItemSerialNumberTextField.getText();
+        if (serialNumber == null) {
+            JOptionPane.showMessageDialog(null, "Invalid serial number");
+        }
+        boolean found = false;
+        for (Item i : iModel.items) {
+            if (i.getSerialNumber().equals(serialNumber)) {
+                found = true;
+                iModel.items.remove(i);
+            }
+        }
+        if (!found) {
+            JOptionPane.showMessageDialog(null, "No item was found with that serial number");
+        }
     }
 }

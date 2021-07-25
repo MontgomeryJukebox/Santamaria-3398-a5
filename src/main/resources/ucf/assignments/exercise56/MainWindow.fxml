@@ -19,20 +19,10 @@
           <Menu mnemonicParsing="false" text="File">
             <items>
                   <MenuItem mnemonicParsing="false" text="New" />
-                  <MenuItem mnemonicParsing="false" text="Save as..." />
+                  <MenuItem fx:id="saveAsMenuItem" mnemonicParsing="false" onAction="#saveAsButtonClicked" text="Save as..." />
                   <MenuItem mnemonicParsing="false" text="Load..." />
                   <SeparatorMenuItem mnemonicParsing="false" />
               <MenuItem mnemonicParsing="false" text="Quit" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Find">
-            <items>
-              <MenuItem fx:id="searchItemButton" mnemonicParsing="false" onAction="#searchItemButtonClicked" text="Search..." />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
             </items>
           </Menu>
         </menus>
@@ -53,7 +43,7 @@
             <HBox spacing="4.0">
                <children>
                   <TextField fx:id="itemSerialNumberTextField" promptText="Serial Number" />
-                  <TextField fx:id="deleteItemSerialNumberTextField" promptText="Name" />
+                  <TextField fx:id="itemsNameTextField" promptText="Name" />
                   <TextField fx:id="itemsPriceTextField" promptText="Price" />
                   <Button mnemonicParsing="false" onAction="#addNewItemButtonClicked" text="New Item" />
                </children>
@@ -61,7 +51,7 @@
             <HBox nodeOrientation="RIGHT_TO_LEFT">
                <children>
                   <Button mnemonicParsing="false" onAction="#deleteItemButtonClicked" text="Delete Item" />
-                  <TextField prefHeight="24.0" prefWidth="163.0" promptText="Serial Number" />
+                  <TextField fx:id="deleteItemSerialNumberTextField" prefHeight="24.0" prefWidth="163.0" promptText="Serial Number" />
                </children>
             </HBox>
             <HBox>
