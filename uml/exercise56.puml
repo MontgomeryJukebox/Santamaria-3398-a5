@@ -6,13 +6,6 @@ class InventoryTracker {
     main()
 }
 
-class SceneManager {
-    scenes: Map<String, Scene>
-
-    load()
-    getScene(String): Scene
-}
-
 class MainWindowController {
     items: ItemModel
     scenes: SceneManager
@@ -63,21 +56,34 @@ class Item {
     ...
 }
 
-class FileManager {
-    saveAsCSV(filename: String, data: String)
-    saveAsJSON(filename: String, data: String)
-    saveAsHTML(filename: String, data: String)
+class Exporter {
+    exportCSV(filename: String, data: String)
+    exportJSON(filename: String, data: String)
+    exportHTML(filename: String, data: String)
+}
+
+class Importer {
+    importCSV(filename: String, data: String)
+    importJSON(filename: String, data: String)
+    importHTML(filename: String, data: String)
+}
+
+file Output {
+
+}
+
+file Input {
+
 }
 
 MainWindowController o-- FileManager
 openjfx.org.Applciation <|-- InventoryTracker
-InventoryTracker -- SceneManager
-SceneManager -- MainWindowController
-SceneManager -- AddItemWindowController
-SceneManager -- EditItemWindowController
-SceneManager -- RemoveItemWindowController
-SceneManager -- SearchItemWindowController
+InventoryTracker -- ItemModel
+Importer -- Input
+Exporter -- Output
 MainWindowController o-- ItemModel
+ItemModel -- Exporter
+ItemModel -- Importer
 SearchItemWindowController o-- ItemModel
 RemoveItemWindowController o-- ItemModel
 EditItemWindowController o-- ItemModel

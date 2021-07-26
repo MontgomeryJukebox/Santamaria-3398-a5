@@ -11,6 +11,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.util.converter.BigDecimalStringConverter;
 
+import javax.swing.*;
 import java.io.IOException;
 import java.io.Reader;
 import java.math.BigDecimal;
@@ -59,7 +60,9 @@ public class Importer {
 
     public ObservableList<Item> importHTML(String filename) throws IOException {
         ObservableList<Item> ret = FXCollections.observableArrayList();
-        // TODO
+        if (!Files.exists(Paths.get(filename))) {
+            JOptionPane.showMessageDialog(null, "Could not find that file");
+        }
         return ret;
     }
 }

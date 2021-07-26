@@ -2,38 +2,23 @@
   "items": [
     {
       "serialNumber": "abc",
-      "name": "def",
+      "name": "123",
       "value": 123
     },
     {
-      "serialNumber": "def",
-      "name": "ghi",
-      "value": 321
-    },
-    {
-      "serialNumber": "how",
-      "name": "ghi",
-      "value": 321
-    },
-    {
       "serialNumber": "hello",
-      "name": "ghi",
-      "value": 321
+      "name": "123",
+      "value": 123
     },
     {
-      "serialNumber": "goodbye",
-      "name": "ghi",
-      "value": 321
+      "serialNumber": "world",
+      "name": "123",
+      "value": 123
     },
     {
-      "serialNumber": "abc123",
-      "name": "ghi",
-      "value": 321
-    },
-    {
-      "serialNumber": "adc3434",
-      "name": "ghi",
-      "value": 321
+      "serialNumber": "test",
+      "name": "123",
+      "value": 123
     }
   ]
 }

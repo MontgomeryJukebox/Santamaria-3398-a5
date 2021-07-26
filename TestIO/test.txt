@@ -1,7 +1,4 @@
-abc	def	123
-def	ghi	321
-how	ghi	321
-hello	ghi	321
-goodbye	ghi	321
-abc123	ghi	321
-adc3434	ghi	321
+abc	123	123
+hello	123	123
+world	123	123
+test	123	123
