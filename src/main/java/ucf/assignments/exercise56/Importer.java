@@ -27,12 +27,12 @@ public class Importer {
     }
 
     public ObservableList<Item> importJSON(String filepath) throws IOException {
-        ItemModel ret;
+        ConcreteItemModel concrete = new ConcreteItemModel();
         String fullPath = rootDir + "/" + filepath;
         reader = Files.newBufferedReader(Paths.get(fullPath));
         assert(reader != null);
-        ret = gson.fromJson(reader, ItemModel.class);
-        return ret.items;
+        concrete = gson.fromJson(reader, ConcreteItemModel.class);
+        return concrete.toObservableList();
     }
 
     public ObservableList<Item> importCSV(String filename) throws IOException {

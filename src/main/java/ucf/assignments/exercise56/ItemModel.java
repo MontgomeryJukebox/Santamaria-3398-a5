@@ -18,6 +18,13 @@ public class ItemModel {
         importer = new Importer("TestIO");
     }
 
+    public ItemModel(ConcreteItemModel concreteModel) {
+        this();
+        for (Item i : concreteModel.items) {
+            items.add(i);
+        }
+    }
+
     public void addItem(Item item) {
         assert(items != null);
         assert(item != null);
@@ -70,5 +77,14 @@ public class ItemModel {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public boolean uniqueSerialNumber(String serialNumber) {
+        for (Item i : items) {
+            if (serialNumber.equals(i.getSerialNumber())) {
+                return false;
+            }
+        }
+        return true;
     }
 }

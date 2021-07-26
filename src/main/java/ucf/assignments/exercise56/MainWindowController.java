@@ -19,6 +19,8 @@ import javafx.util.converter.BigDecimalStringConverter;
 import javax.swing.*;
 import java.math.BigDecimal;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -85,6 +87,10 @@ public class MainWindowController implements Initializable {
 
     public void addNewItem(String sn, String name, BigDecimal price) {
         Item item = new Item(sn, name, price);
+        if (!iModel.uniqueSerialNumber(sn)) {
+            JOptionPane.showMessageDialog(null, "An item already exists with that serial number.");
+            return;
+        }
         iModel.addItem(item);
         itemsTableView.setItems(iModel.items);
     }
@@ -136,9 +142,19 @@ public class MainWindowController implements Initializable {
                 new EventHandler<TableColumn.CellEditEvent<Item, String>>() {
                     @Override
                     public void handle(TableColumn.CellEditEvent<Item, String> event) {
+                        String serialNumber = event.getNewValue();
+                        if (!Item.isValidSerialNumber(serialNumber)) {
+                            JOptionPane.showMessageDialog(null, "Invalid Serial Number");
+                        }
+                        System.out.println("serial Number is unique: " + iModel.uniqueSerialNumber(serialNumber));
+                        if (!iModel.uniqueSerialNumber(serialNumber)) {
+                            JOptionPane.showMessageDialog(null, "There is already an item with that serial number");
+                            itemsTableView.setItems(iModel.items);
+                            return;
+                        }
                         ((Item) event.getTableView().getItems().get(
                                 event.getTablePosition().getRow())
-                        ).setSerialNumber(event.getNewValue());
+                        ).setSerialNumber(serialNumber);
                     }
                 }
         );
@@ -209,6 +225,16 @@ public class MainWindowController implements Initializable {
         }
         if (!found) {
             JOptionPane.showMessageDialog(null, "No item was found with that serial number");
+        }
+    }
+
+    public void loadMenuItemClicked(ActionEvent actionEvent) {
+        String filename = JOptionPane.showInputDialog(null, "Please enter the name of the file to import from: ");
+        if (filename == null) {
+            JOptionPane.showMessageDialog(null, "Invalid filename given");
+        }
+        if (!Files.exists(Path.of(filename))) {
+            JOptionPane.showMessageDialog(null, "Could not find file " + filename);
         }
     }
 }

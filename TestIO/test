@@ -1,0 +1,14 @@
+{
+  "items": [
+    {
+      "serialNumber": "abc",
+      "name": "def",
+      "value": 123
+    },
+    {
+      "serialNumber": "def",
+      "name": "ghi",
+      "value": 321
+    }
+  ]
+}

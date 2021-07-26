@@ -33,11 +33,12 @@ public class Exporter {
         // we'll make sure we have the full path
         String fullPath = rootDir + "/" + title;
 
+        ConcreteItemModel concrete = new ConcreteItemModel(model);
         try {
             // we'll make a new writer,
             writer = Files.newBufferedWriter(Paths.get(fullPath));
             // export to json
-            gson.toJson(model, writer);
+            gson.toJson(concrete, writer);
             // and make sure we flush before we're done with everything
             writer.flush();
             writer.close();
