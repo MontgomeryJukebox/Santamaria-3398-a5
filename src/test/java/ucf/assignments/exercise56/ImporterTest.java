@@ -6,35 +6,31 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ExporterTest {
+class ImporterTest {
 
     @Test
-    void exportJSON() {
+    void importJSON() {
         ItemModel model = new ItemModel();
         model.addItem(new Item("abc", "123", new BigDecimalStringConverter().fromString("123")));
         model.addItem(new Item("hello", "123", new BigDecimalStringConverter().fromString("123")));
-        model.addItem(new Item("world", "123", new BigDecimalStringConverter().fromString("123")));
-        model.addItem(new Item("test", "123", new BigDecimalStringConverter().fromString("123")));
         model.exportJSON("test");
         ObservableList<Item> tmp = model.items;
         model.importJSON("test.json");
-        assert(model.items.get(0).getSerialNumber().equals("abc"));
+        assert(model.items.get(1).getSerialNumber().equals("hello"));
     }
 
     @Test
-    void exportCSV() {
+    void importCSV() {
         ItemModel model = new ItemModel();
         model.addItem(new Item("abc", "123", new BigDecimalStringConverter().fromString("123")));
         model.addItem(new Item("hello", "123", new BigDecimalStringConverter().fromString("123")));
-        model.addItem(new Item("world", "123", new BigDecimalStringConverter().fromString("123")));
-        model.addItem(new Item("test", "123", new BigDecimalStringConverter().fromString("123")));
         model.exportCSV("test");
         ObservableList<Item> tmp = model.items;
         model.importCSV("test.txt");
-        assert(model.items.get(0).getSerialNumber().equals("abc"));
+        assert(model.items.get(1).getSerialNumber().equals("hello"));
     }
 
     @Test
-    void exportHTML() {
+    void importHTML() {
     }
 }

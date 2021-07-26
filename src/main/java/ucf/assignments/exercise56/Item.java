@@ -33,7 +33,7 @@ public class Item {
     }
 
     public static boolean isValidName(String name) {
-        return name.length() > 0 && name.length() <= 256;
+        return name.length() > 1 && name.length() <= 256;
     }
 
     public String getName() {

@@ -1,4 +1,2 @@
 abc	123	123
 hello	123	123
-world	123	123
-test	123	123

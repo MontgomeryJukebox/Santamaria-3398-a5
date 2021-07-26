@@ -1,11 +1,9 @@
+ucf/assignments/exercise56/InventoryViewer.java
+ ucf.assignments.exercise56.InventoryViewer
 ucf/assignments/exercise56/ItemModel.java
  ucf.assignments.exercise56.ItemModel
 ucf/assignments/exercise56/Exporter.java
  ucf.assignments.exercise56.Exporter
-ucf/assignments/exercise56/InventoryViewer.java
- ucf.assignments.exercise56.InventoryViewer
-ucf/assignments/exercise56/Importer.java
- ucf.assignments.exercise56.Importer
 ucf/assignments/exercise56/ConcreteItemModel.java
  ucf.assignments.exercise56.ConcreteItemModel
 ucf/assignments/exercise56/MainWindowController.java
@@ -15,3 +13,5 @@ ucf/assignments/exercise56/MainWindowController.java
  ucf.assignments.exercise56.MainWindowController$3
 ucf/assignments/exercise56/Item.java
  ucf.assignments.exercise56.Item
+ucf/assignments/exercise56/Importer.java
+ ucf.assignments.exercise56.Importer

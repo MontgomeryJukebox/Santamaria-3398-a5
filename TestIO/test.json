@@ -9,16 +9,6 @@
       "serialNumber": "hello",
       "name": "123",
       "value": 123
-    },
-    {
-      "serialNumber": "world",
-      "name": "123",
-      "value": 123
-    },
-    {
-      "serialNumber": "test",
-      "name": "123",
-      "value": 123
     }
   ]
 }

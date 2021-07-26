@@ -185,25 +185,29 @@ public class MainWindowController implements Initializable {
         );
     }
 
-    public void searchItemFieldTyped(KeyEvent keyEvent) {
-        if (searchField.getText().length() == 0) {
-            itemsTableView.setItems(iModel.items);
-        }
+    ObservableList<Item> filteredItems(String regex) {
         Pattern filter = Pattern.compile(searchField.getText(), Pattern.CASE_INSENSITIVE);
         Matcher matcher;
-        ObservableList<Item> tmp = FXCollections.observableArrayList();
+        ObservableList<Item> ret = FXCollections.observableArrayList();
         for (Item i : iModel.items) {
             matcher = filter.matcher(i.getName());
             if (matcher.find()) {
-                tmp.add(i);
+                ret.add(i);
                 continue;
             }
             matcher = filter.matcher(i.getSerialNumber());
             if (matcher.find()) {
-                tmp.add(i);
+                ret.add(i);
             }
         }
-        itemsTableView.setItems(tmp);
+        return ret;
+    }
+
+    public void searchItemFieldTyped(KeyEvent keyEvent) {
+        if (searchField.getText().length() == 0) {
+            itemsTableView.setItems(iModel.items);
+        }
+        itemsTableView.setItems(filteredItems(searchField.getText()));
     }
 
     public void deleteItemButtonClicked(ActionEvent actionEvent) {

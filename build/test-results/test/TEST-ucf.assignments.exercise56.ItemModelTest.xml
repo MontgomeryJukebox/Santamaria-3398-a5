@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="ucf.assignments.exercise56.ItemModelTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2021-07-26T03:29:56" hostname="turing" time="0.034">
+  <properties/>
+  <testcase name="addItem()" classname="ucf.assignments.exercise56.ItemModelTest" time="0.032"/>
+  <testcase name="uniqueSerialNumber()" classname="ucf.assignments.exercise56.ItemModelTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
